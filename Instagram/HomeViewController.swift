@@ -90,6 +90,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:event:)), forControlEvents:  UIControlEvents.TouchUpInside)
         
+        // (課題用)セル内のコメントボタンのアクションをソースコードで設定する
+        cell.commentButton.addTarget(self, action:#selector(HomeViewController.handleCommentButton(_:event:)),forControlEvents: UIControlEvents.TouchUpInside)
+        
         // UILabelの行数が変わっている可能性があるので再描画させる
         cell.layoutIfNeeded()
         
@@ -140,12 +143,34 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let time = (postData.date?.timeIntervalSinceReferenceDate)! as NSTimeInterval
             let likes = postData.likes
             
+            // (課題用) コメントの追加
+            let comments = postData.comments
+            
             // 辞書を作成してFirebaseに保存する
-            let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes]
+            // (課題用) コメントの追加
+            let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes, "comments": comments]
             let postRef = FIRDatabase.database().reference().child(CommonConst.PostPATH)
             postRef.child(postData.id!).setValue(post)
         }
     }
+    
+    // (課題用)セル内のコメントボタンがタップされた時に呼ばれるメソッド
+    func handleCommentButton(sender: UIButton, event: UIEvent) {
+        
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches()?.first
+        let point = touch!.locationInView(self.tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        let commentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Comment") as! CommentViewController
+        commentViewController.postData = postData
+        
+        self.presentViewController(commentViewController, animated: true, completion: nil)
+    }
+
     
     /*
     // MARK: - Navigation

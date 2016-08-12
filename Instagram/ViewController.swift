@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // (課題用) コメント後の動作用
+        setupTab()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +65,9 @@ class ViewController: UIViewController {
         
         tabBarController.setViewController(homeViewController, atIndex: 0)
         tabBarController.setViewController(settingViewController, atIndex: 2)
+        
+        // (課題用)コメント時にHomeに残るようにする
+        tabBarController.setSelectedIndex(0, animated: false)
         
         // 真ん中のタブはボタンとして扱う
         tabBarController.highlightButtonAtIndex(1)

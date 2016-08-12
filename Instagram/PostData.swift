@@ -21,6 +21,9 @@ class PostData: NSObject {
     var likes: [String] = []
     var isLiked: Bool = false
     
+    // (課題) コメント用の定数を追加
+    var comments: [[String:String]] = []
+    
     init(snapshot: FIRDataSnapshot, myId: String) {
         id = snapshot.key
         
@@ -45,6 +48,12 @@ class PostData: NSObject {
         }
         
         self.date = NSDate(timeIntervalSinceReferenceDate: valueDictionary["time"] as! NSTimeInterval)
+        
+        // (課題) コメント用の処理を追加
+        if let comments = valueDictionary["comments"] as? [[String:String]] {
+            self.comments = comments
+        }
+        
     }
     
 }

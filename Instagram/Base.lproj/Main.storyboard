@@ -262,6 +262,57 @@
             </objects>
             <point key="canvasLocation" x="2187" y="-625"/>
         </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="bn1-nj-l5m">
+            <objects>
+                <viewController storyboardIdentifier="Comment" id="Eue-dA-OkS" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jFn-Oh-3CT"/>
+                        <viewControllerLayoutGuide type="bottom" id="DDs-nq-GsF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jYk-tK-CQV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-VW-ppW">
+                                <rect key="frame" x="30" y="100" width="68" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="コメントを入力して下さい" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZp-tF-leg">
+                                <rect key="frame" x="30" y="130.5" width="540" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KT-U4-OD1">
+                                <rect key="frame" x="30" y="170.5" width="30" height="30"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="backButton:" destination="Eue-dA-OkS" eventType="touchUpInside" id="6YI-td-CAF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lZp-tF-leg" firstAttribute="leading" secondItem="jYk-tK-CQV" secondAttribute="leadingMargin" constant="10" id="Bra-a3-GJA"/>
+                            <constraint firstItem="7KT-U4-OD1" firstAttribute="leading" secondItem="jYk-tK-CQV" secondAttribute="leadingMargin" constant="10" id="CTf-bw-NxL"/>
+                            <constraint firstItem="lZp-tF-leg" firstAttribute="top" secondItem="t5P-VW-ppW" secondAttribute="bottom" constant="10" id="Jcn-8d-T2f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lZp-tF-leg" secondAttribute="trailing" constant="10" id="KCy-HL-u6T"/>
+                            <constraint firstItem="7KT-U4-OD1" firstAttribute="top" secondItem="lZp-tF-leg" secondAttribute="bottom" constant="10" id="TJ8-xZ-eaW"/>
+                            <constraint firstItem="t5P-VW-ppW" firstAttribute="leading" secondItem="jYk-tK-CQV" secondAttribute="leadingMargin" constant="10" id="Zwv-G6-lhY"/>
+                            <constraint firstItem="t5P-VW-ppW" firstAttribute="top" secondItem="jFn-Oh-3CT" secondAttribute="bottom" constant="80" id="ciM-c1-VfJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentLabel" destination="t5P-VW-ppW" id="g8g-3V-G57"/>
+                        <outlet property="commentTextField" destination="lZp-tF-leg" id="e1k-Lf-EYz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRX-D6-pbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2930" y="-625"/>
+        </scene>
         <!--Post View Controller-->
         <scene sceneID="gfI-Tz-ih7">
             <objects>

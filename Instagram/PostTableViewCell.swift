@@ -16,6 +16,10 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
+    // (課題用)コメント用IBOutletの追加
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
+    
     var postData: PostData!
     
     override func awakeFromNib() {
@@ -32,8 +36,15 @@ class PostTableViewCell: UITableViewCell {
     // 表示されるときに呼ばれるメソッドをオーバーライドしてデータをUIに反映する
     override func layoutSubviews() {
         
+        var commentText: String = ""
         postImageView.image = postData.image
         captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        
+        // (課題)コメント者と名前を追加
+        for i in 0..<postData.comments.count {
+            commentText = commentText + postData.comments[i]["name"]! + " : " + postData.comments[i]["comment"]! + "\n"
+        }
+        commentLabel.text = commentText
         
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
